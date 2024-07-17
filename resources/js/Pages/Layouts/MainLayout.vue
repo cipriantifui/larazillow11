@@ -1,22 +1,32 @@
 <template>
-  <Link href="/">Main Page  </Link>
-  <Link href="/hello">Show Page  </Link>
+    <Link href="/">Main Page  </Link>
+    <Link href="/hello">Show Page  </Link>
 
-  <div>The timer is: {{ timer }}</div>
+    <div v-if="flashSuccess" class="success">
+        {{ flashSuccess }}
+    </div>
 
-  <slot />
+    <slot />
 </template>
 
 <script setup>
-import {Link} from '@inertiajs/inertia-vue3'
-import {ref} from 'vue'
+import {computed} from "vue";
+import {Link, usePage} from '@inertiajs/inertia-vue3'
+// page props are available in the setup function
 
-const timer = ref(0)
-setInterval(() => {
-  timer.value++
-}, 1000)
+const page = usePage();
+const flashSuccess = computed(() => page.props.value.flash.success);
+
 </script>
 
 <style scoped>
-
+    .success {
+        background-color: #d1e7dd;
+        border-color: #badbcc;
+        color: #0f5132;
+        margin-bottom: 1rem;
+        padding: .75rem 1.25rem;
+        border: 1px solid transparent;
+        border-radius: .25rem;
+    }
 </style>

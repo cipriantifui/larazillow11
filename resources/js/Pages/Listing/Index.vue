@@ -1,4 +1,7 @@
 <template>
+    <div class="py-2">
+        <Link href="listing/create">Create Page</Link>
+    </div>
     <div v-for="listing in listings" :key="listing.id">
         <Link :href="`/listing/${listing.id}`">
             <ListingAddress :listing="listing" />
