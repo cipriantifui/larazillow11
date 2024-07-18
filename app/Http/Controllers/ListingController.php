@@ -38,7 +38,7 @@ class ListingController extends Controller
                 'city' => 'required|string|max:255',
                 'code' => 'required|string|max:55',
                 'street' => 'required|string|max:255',
-                'street_nr' => 'required|integer|min:1|max:1000',
+                'street_nr' => 'required|integer|min:1|max:9999',
                 'price' => 'required|integer|min:1|max:20000000',
             ])
         );
@@ -80,7 +80,7 @@ class ListingController extends Controller
                 'city' => 'required|string|max:255',
                 'code' => 'required|string|max:55',
                 'street' => 'required|string|max:255',
-                'street_nr' => 'required|integer|min:1|max:1000',
+                'street_nr' => 'required|integer|min:1|max:9999',
                 'price' => 'required|integer|min:1|max:20000000',
             ])
         );
