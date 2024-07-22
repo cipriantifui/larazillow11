@@ -1,12 +1,29 @@
 <template>
-    <Link :href="route('listing.index')">Listings  </Link> &nbsp;
-    <Link :href="route('listing.create')">Create Listing  </Link>
 
-    <div v-if="flashSuccess" class="success">
-        {{ flashSuccess }}
-    </div>
+    <header class="border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 w-full">
+        <div class="container mx-auto">
+            <nav class="p-4 flex items-center justify-between">
+                <div class="text-lg font-medium">
+                    <Link :href="route('listing.index')">Listings</Link>
+                </div>
+                <div class="text-xl text-indigo-600 dark:text-indigo-200 font-medium">
+                    <Link :href="route('listing.index')">LaraZillow</Link>
+                </div>
+                <div>
+                    <Link :href="route('listing.create')"
+                          class="bg-indigo-600 hover:bg-indigo-500 text-white font-medium p-2 rounded-md">+ New Listing</Link>
+                </div>
+            </nav>
+        </div>
+    </header>
 
-    <slot />
+    <main class="container mx-auto p-4">
+        <div v-if="flashSuccess" class="mb-4 border rounded-md shadow-sm border-green-200 dark:border-gray-800 bg-green-50 dark:bg-green-900 p-2 text-green-900 dark:text-white font-medium">
+            {{ flashSuccess }}
+        </div>
+
+        <slot />
+    </main>
 </template>
 
 <script setup>
@@ -20,13 +37,5 @@ const flashSuccess = computed(() => page.props.value.flash.success);
 </script>
 
 <style scoped>
-    .success {
-        background-color: #d1e7dd;
-        border-color: #badbcc;
-        color: #0f5132;
-        margin-bottom: 1rem;
-        padding: .75rem 1.25rem;
-        border: 1px solid transparent;
-        border-radius: .25rem;
-    }
+
 </style>
