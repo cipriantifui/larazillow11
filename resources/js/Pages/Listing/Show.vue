@@ -14,9 +14,9 @@
             </Box>
             <Box>
                 <template #header>
-                    Offer
+                    Monthly Payment
                 </template>
-                Make an offer
+                <MonthlyPayment :listing="listing"/>
             </Box>
         </div>
     </div>
@@ -27,8 +27,9 @@
     import ListingSpace from "@/Components/UI/ListingSpace.vue";
     import Price from "@/Components/UI/Price.vue";
     import Box from "@/Components/UI/Box.vue";
+    import MonthlyPayment from "@/Components/UI/MonthlyPayment.vue";
 
-    defineProps({
+    const props = defineProps({
         listing: Object,
     });
 </script>
