@@ -16,7 +16,7 @@
         </div>
     </header>
 
-    <main class="container mx-auto p-4">
+    <main class="container mx-auto p-4 w-full">
         <div v-if="flashSuccess" class="mb-4 border rounded-md shadow-sm border-green-200 dark:border-gray-800 bg-green-50 dark:bg-green-900 p-2 text-green-900 dark:text-white font-medium">
             {{ flashSuccess }}
         </div>
