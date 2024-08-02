@@ -18,9 +18,7 @@ Route::resource('user-account', UserAccountController::class)
 // End of Auth routes
 
 Route::resource('listing', ListingController::class)
+    ->only('create', 'store', 'edit', 'update', 'destroy')
+    ->middleware('auth');
+Route::resource('listing', ListingController::class)
     ->only(['index', 'show']);
-
-Route::middleware(['auth'])->group(function () {
-    Route::resource('listing', ListingController::class)
-        ->only(['create', 'store', 'edit', 'update', 'destroy']);
-});
