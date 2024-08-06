@@ -1,14 +1,21 @@
 <template>
+    <Filters :filters="filters"></Filters>
     <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-        <Listing v-for="listing in listings" :listing="listing" :key="listing.id"></Listing>
+        <Listing v-for="listing in listings.data" :listing="listing" :key="listing.id"></Listing>
+    </div>
+    <div v-if="listings.data.length" class="w-full flex justify-center my-4">
+        <Pagination :links="listings.links" />
     </div>
 </template>
 
 <script setup>
-    import Listing from "@/Pages/Listing/Index/Componentes/Listing.vue";
+    import Listing from "@/Pages/Listing/Index/Components/Listing.vue";
+    import Pagination from "@/Components/UI/Pagination.vue";
+    import Filters from "@/Pages/Listing/Index/Components/Filters.vue";
     defineProps({
-        listings: Array,
-    })
+        listings: Object,
+        filters: Object
+    });
 </script>
 
 <style scoped>
