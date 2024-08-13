@@ -19,11 +19,12 @@ Route::resource('user-account', UserAccountController::class)
 // End of Auth routes
 
 Route::resource('listing', ListingController::class)
-    ->only('create', 'store', 'edit', 'update', 'destroy')
+    ->only('create', 'store', 'edit', 'update')
     ->middleware('auth');
 Route::resource('listing', ListingController::class)
     ->only(['index', 'show']);
 
 Route::prefix('realtor')->name('realtor.')->middleware('auth')->group(function () {
-    Route::resource('listing', RealtorListingController::class);
+    Route::resource('listing', RealtorListingController::class)
+        ->only(['index', 'destroy']);
 });
