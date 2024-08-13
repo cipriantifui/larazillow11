@@ -2,7 +2,9 @@
     <form>
         <div class="my-4 flex flex-wrap gap-4">
             <div class="flex flex-nowrap items-center gap-2">
-                <input v-model="filterForm.deleted" id="deleted" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                <input v-model="filterForm.deleted" id="deleted" type="checkbox"
+                       class="h-4 w-4 rounded border-gray-300
+                        text-indigo-600 focus:ring-indigo-500">
                 <label for="deleted">Deleted</label>
             </div>
             <div>
@@ -23,10 +25,14 @@
     import {Inertia} from "@inertiajs/inertia";
     import {debounce} from "lodash";
 
+    const props = defineProps({
+        filters: Object
+    });
+
     const filterForm = reactive({
-        deleted: false,
-        by: 'created_at',
-        order: 'desc'
+        deleted: props.filters.deleted || false,
+        by: props.filters.by || 'created_at',
+        order: props.filters.order || 'desc'
     });
 
     const sortables = {

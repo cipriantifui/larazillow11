@@ -25,6 +25,7 @@ class RealtorListingController extends Controller
         $listings = \Auth::user()->listings()->filter($filters)->get();
 
         return inertia('Realtor/Index', [
+            'filters' => $filters,
             'listings' => $listings,
         ]);
     }
