@@ -22,7 +22,8 @@ class RealtorListingController extends Controller
             'deleted' => $request->boolean('deleted'),
             ... $request->only(['by', 'order']),
         ];
-        $listings = \Auth::user()->listings()->filter($filters)->get();
+        $listings = \Auth::user()->listings()
+            ->filter($filters)->paginate(6)->withQueryString();
 
         return inertia('Realtor/Index', [
             'filters' => $filters,
