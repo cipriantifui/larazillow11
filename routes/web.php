@@ -19,9 +19,12 @@ Route::resource('user-account', UserAccountController::class)
 // End of Auth routes
 
 Route::resource('listing', ListingController::class)
-    ->only(['index', 'show']);
+    ->only(['index', 'show'])->withTrashed();;
 
 Route::prefix('realtor')->name('realtor.')->middleware('auth')->group(function () {
     Route::resource('listing', RealtorListingController::class)
-        ->only(['index', 'create', 'store', 'edit', 'update', 'destroy']);
+        ->only(['index', 'create', 'store', 'edit', 'update', 'destroy'])
+        ->withTrashed();
+    Route::put('listing/{listing}/restore', [RealtorListingController::class, 'restore'])
+        ->name('listing.restore')->withTrashed();
 });
