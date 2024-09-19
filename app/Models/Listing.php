@@ -63,4 +63,9 @@ class Listing extends Model
                 $query->orderBy($value, $filters['order'] ?? 'desc')
         );
     }
+
+    public function images()
+    {
+        return $this->hasMany(ListingImage::class);
+    }
 }
