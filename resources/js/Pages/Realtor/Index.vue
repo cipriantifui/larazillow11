@@ -13,21 +13,29 @@
                     </div>
                     <ListingAddress :listing="listing" class="text-gray-500"></ListingAddress>
                 </div>
-                <div class="flex items-center gap-1 text-gray-600 dark:text-gray-300">
-                    <a :href="route('listing.show', listing.id)"
-                       target="_blank"
-                       class="btn-outline text-xs font-medium">Preview</a>
-                    <Link :href="route('realtor.listing.edit', listing.id)" class="btn-outline text-xs font-medium">Edit</Link>
+                <section>
+                    <div class="flex items-center gap-1 text-gray-600 dark:text-gray-300">
+                        <a :href="route('listing.show', listing.id)"
+                           target="_blank"
+                           class="btn-outline text-xs font-medium">Preview</a>
+                        <Link :href="route('realtor.listing.edit', listing.id)" class="btn-outline text-xs font-medium">Edit</Link>
 
-                    <Link v-if="listing.deleted_at"
-                          :href="route('realtor.listing.restore', listing.id)"
-                          class="btn-outline text-xs font-medium"
-                          method="put" as="button">Restore</Link>
-                    <Link v-else
-                        :href="route('realtor.listing.destroy', listing.id)"
-                        class="btn-outline text-xs font-medium"
-                        method="delete" as="button">Delete</Link>
-                </div>
+                        <Link v-if="listing.deleted_at"
+                              :href="route('realtor.listing.restore', listing.id)"
+                              class="btn-outline text-xs font-medium"
+                              method="put" as="button">Restore</Link>
+                        <Link v-else
+                              :href="route('realtor.listing.destroy', listing.id)"
+                              class="btn-outline text-xs font-medium"
+                              method="delete" as="button">Delete</Link>
+                    </div>
+                    <div class="mt-2">
+                        <Link :href="route('realtor.listing.image.create', listing.id)"
+                              class="btn-outline text-xs font-medium block w-full text-center">
+                            Images ({{ listing.images_count }})
+                        </Link>
+                    </div>
+                </section>
             </div>
         </Box>
     </section>
